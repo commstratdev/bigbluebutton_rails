@@ -38,8 +38,6 @@ class BigbluebuttonServer < ActiveRecord::Base
             :presence => true,
             :inclusion => { :in => ['0.7', '0.8'] }
 
-  attr_accessible :name, :url, :version, :salt, :param
-
   # Array of <tt>BigbluebuttonMeeting</tt>
   attr_reader :meetings
 

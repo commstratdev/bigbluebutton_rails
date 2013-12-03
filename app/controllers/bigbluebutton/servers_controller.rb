@@ -57,7 +57,7 @@ class Bigbluebutton::ServersController < ApplicationController
   end
 
   def create
-    @server = BigbluebuttonServer.new(params[:bigbluebutton_server])
+    @server = BigbluebuttonServer.new(bigbluebutton_server_params)
 
     respond_with @server do |format|
       if @server.save
@@ -75,7 +75,7 @@ class Bigbluebutton::ServersController < ApplicationController
 
   def update
     respond_with @server do |format|
-      if @server.update_attributes(params[:bigbluebutton_server])
+      if @server.update_attributes(bigbluebutton_server_params)
         format.html {
           message = t('bigbluebutton_rails.servers.notice.update.success')
           redirect_to(@server, :notice => message)
@@ -181,6 +181,10 @@ class Bigbluebutton::ServersController < ApplicationController
         format.json { render :json => e.to_s, :status => :error }
       end
     end
+  end
+
+  def bigbluebutton_server_params
+    params.require(:bigbluebutton_server).permit(:name, :url, :version, :salt, :param)
   end
 
 end

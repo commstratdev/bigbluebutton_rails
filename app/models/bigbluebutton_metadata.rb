@@ -13,8 +13,6 @@ class BigbluebuttonMetadata < ActiveRecord::Base
     :uniqueness => { :scope => [:owner_id, :owner_type] }
   validate :exclusion_of_name_in_reserved_metadata_keys
 
-  attr_accessible :name, :content
-
   # metadata keys are only invalid when the metadata belongs to a room,
   # metadata that will be used in a 'create' call
   # TODO: a better solution for rails >= 3.1

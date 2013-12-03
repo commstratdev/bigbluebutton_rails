@@ -8,9 +8,6 @@ class BigbluebuttonRecording < ActiveRecord::Base
             :presence => true,
             :uniqueness => true
 
-  attr_accessible :recordid, :meetingid, :name, :published, :start_time,
-                  :end_time, :available, :description
-
   has_many :metadata,
            :class_name => 'BigbluebuttonMetadata',
            :as => :owner,

@@ -45,11 +45,6 @@ class BigbluebuttonRoom < ActiveRecord::Base
   validates :attendee_password, :presence => true, :if => :private?
   validates :moderator_password, :presence => true, :if => :private?
 
-  attr_accessible :name, :server_id, :meetingid, :attendee_password, :moderator_password,
-                  :welcome_msg, :owner, :server, :private, :logout_url, :dial_number,
-                  :voice_bridge, :max_participants, :owner_id, :owner_type,
-                  :external, :param, :record, :duration, :metadata_attributes
-
   # Note: these params need to be fetched from the server before being accessed
   attr_accessor :running, :participant_count, :moderator_count, :attendees,
                 :has_been_forcibly_ended, :start_time, :end_time
